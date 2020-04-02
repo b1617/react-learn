@@ -1,19 +1,27 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { signUp, signIn } from '../apis/User.api';
 class Login extends React.Component {
   state = {
     email: '',
     password: ''
   };
 
-  onSubmit = e => {
+  submit = e => {
     e.preventDefault();
+    //    signUp(this.state.email, this.state.password).then(value => {
+    //     console.log(value);
+    //  });
+    signIn(this.state.email, this.state.password).then(user => {
+      console.log(user);
+      if (user.token) {
+        this.props.history.push(`/`);
+      }
+    });
   };
 
   onChange = e => {
-    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -33,15 +41,9 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.onSubmit}
-        noValidate
-        autoComplete='off'
-        style={this.formStyle}
-      >
+      <form noValidate autoComplete='off' style={this.formStyle}>
         <TextField
           onChange={this.onChange}
-          id='outlined-basic'
           type='email'
           name='email'
           value={this.state.email}
@@ -52,14 +54,18 @@ class Login extends React.Component {
         <TextField
           style={{ marginTop: '15px' }}
           onChange={this.onChange}
-          id='outlined-basic'
           type='password'
           name='password'
           value={this.state.password}
           label='Password'
           variant='outlined'
         />
-        <Button style={this.btnStyle} variant='outlined' color='primary'>
+        <Button
+          onClick={this.submit}
+          style={this.btnStyle}
+          variant='outlined'
+          color='primary'
+        >
           Login
         </Button>
       </form>

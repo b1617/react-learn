@@ -27,7 +27,9 @@ function Header() {
       <AppBar position='static'>
         <Toolbar>
           <Typography variant='h6' className={classes.title}>
-            Home
+            <Link to='/' className={classes.link}>
+              Home
+            </Link>
           </Typography>
           <Link to='/login' className={classes.link}>
             <Button color='inherit'>Login</Button>
