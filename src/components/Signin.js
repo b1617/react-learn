@@ -11,12 +11,10 @@ class Signin extends React.Component {
 
   submit = e => {
     e.preventDefault();
-    //    signUp(this.state.email, this.state.password).then(value => {
-    //     console.log(value);
-    //  });
-    signIn(this.state.email, this.state.password).then(user => {
-      console.log(user);
-      if (user.token) {
+    signIn(this.state.email, this.state.password).then(res => {
+      const { user, token } = res;
+      if (user && token) {
+        this.props.loginHandler(true, { user, token });
         this.props.history.push(`/`);
       }
     });
