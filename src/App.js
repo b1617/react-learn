@@ -34,7 +34,13 @@ class App extends React.Component {
             isLoggedIn={this.state.isLoggedIn}
             loginHandler={this.loginHandler}
           ></Header>
-          <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/'
+            render={props => (
+              <Home {...props} isLoggedIn={this.state.isLoggedIn} />
+            )}
+          />
           <Route
             path='/signin'
             render={props => (
