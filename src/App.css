@@ -1,0 +1,15 @@
+.formStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5%;
+}
+
+.formStyle > div {
+  margin-top: 5px;
+}
+
+.btnStyle {
+  top: 5px;
+  width: 225px;
+}
