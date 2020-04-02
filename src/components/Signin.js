@@ -1,8 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { signUp, signIn } from '../apis/User.api';
-class Login extends React.Component {
+import { signIn } from '../apis/User.api';
+import './../App.css';
+class Signin extends React.Component {
   state = {
     email: '',
     password: ''
@@ -27,21 +28,9 @@ class Login extends React.Component {
     });
   };
 
-  formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    margin: '5%'
-  };
-
-  btnStyle = {
-    marginTop: '15px',
-    width: '225px'
-  };
-
   render() {
     return (
-      <form noValidate autoComplete='off' style={this.formStyle}>
+      <form noValidate autoComplete='off' className='formStyle'>
         <TextField
           onChange={this.onChange}
           type='email'
@@ -52,7 +41,6 @@ class Login extends React.Component {
         />
 
         <TextField
-          style={{ marginTop: '15px' }}
           onChange={this.onChange}
           type='password'
           name='password'
@@ -61,8 +49,8 @@ class Login extends React.Component {
           variant='outlined'
         />
         <Button
+          className='btnStyle'
           onClick={this.submit}
-          style={this.btnStyle}
           variant='outlined'
           color='primary'
         >
@@ -73,4 +61,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Signin;
