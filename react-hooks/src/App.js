@@ -1,23 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
+import Header from './components/layout/Header';
 
 function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: 'Coucou',
+      completed: false
+    },
+    {
+      id: 2,
+      title: 'Salut',
+      completed: false
+    }
+  ]);
+
+  const addTodo = (title) => {
+    setTodos([...todos, { id: todos.length + 1, title, completed: false }]);
+  };
+
+  console.log(todos);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-      </header>
+    <div className='App'>
+      <div className='container'>
+        <Header />
+        <AddTodo addTodo={addTodo}></AddTodo>
+        <Todos todos={todos}> </Todos>
+      </div>
     </div>
   );
 }
