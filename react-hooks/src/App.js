@@ -22,13 +22,30 @@ function App() {
     setTodos([...todos, { id: todos.length + 1, title, completed: false }]);
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const markTodo = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
+
   console.log(todos);
   return (
     <div className='App'>
       <div className='container'>
         <Header />
         <AddTodo addTodo={addTodo}></AddTodo>
-        <Todos todos={todos}> </Todos>
+        <Todos todos={todos} deleteTodo={deleteTodo} markTodo={markTodo}>
+          {' '}
+        </Todos>
       </div>
     </div>
   );

@@ -6,7 +6,8 @@ export default function Todos(props) {
     <TodoItem
       key={todo.id}
       todo={todo}
-      addTodoHandler={props.addTodo}
+      deleteTodoHandler={props.deleteTodo}
+      markTodoHandler={props.markTodo}
     ></TodoItem>
   ));
 }

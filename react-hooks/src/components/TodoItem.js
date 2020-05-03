@@ -25,8 +25,17 @@ export default function TodosItem(props) {
   return (
     <div style={getStyle()}>
       <p>
-        <input type='checkbox'></input> {title}
-        <button style={btnStyle}>X</button>
+        <input
+          type='checkbox'
+          onChange={props.markTodoHandler.bind(null, id)}
+        ></input>{' '}
+        {title}
+        <button
+          style={btnStyle}
+          onClick={props.deleteTodoHandler.bind(null, id)}
+        >
+          X
+        </button>
       </p>
     </div>
   );
