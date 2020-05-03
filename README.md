@@ -1,6 +1,6 @@
 # Todolist
 
-This project was build with [React](https://github.com/facebook/create-react-app) with the purpose to learn.
+This project was build with [React](https://github.com/facebook/create-react-app) to learn.
 
 There are 2 Todolist, one with **class** and one with **hooks**.
 
