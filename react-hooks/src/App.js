@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import About from './pages/About';
 import Header from './components/layout/Header';
 
 function App() {
@@ -39,15 +41,30 @@ function App() {
 
   console.log(todos);
   return (
-    <div className='App'>
-      <div className='container'>
-        <Header />
-        <AddTodo addTodo={addTodo}></AddTodo>
-        <Todos todos={todos} deleteTodo={deleteTodo} markTodo={markTodo}>
-          {' '}
-        </Todos>
+    <BrowserRouter>
+      <div className='App'>
+        <div className='container'>
+          <Header />
+          <Route
+            path='/'
+            exact
+            render={(props) => (
+              <React.Fragment>
+                <AddTodo addTodo={addTodo}></AddTodo>
+                <Todos
+                  todos={todos}
+                  deleteTodo={deleteTodo}
+                  markTodo={markTodo}
+                >
+                  {' '}
+                </Todos>
+              </React.Fragment>
+            )}
+          />
+          <Route path='/about' component={About} />
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
