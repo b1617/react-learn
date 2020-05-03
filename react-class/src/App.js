@@ -5,25 +5,39 @@ import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import Header from './components/layout/Header';
 import About from './pages/About';
-import Axios from 'axios';
 
 class App extends Component {
   state = {
-    todos: []
+    todos: [
+      {
+        id: 1,
+        title: 'Hello',
+        completed: false
+      },
+      {
+        id: 2,
+        title: 'World',
+        completed: true
+      },
+      {
+        id: 3,
+        title: 'Foo',
+        completed: false
+      },
+      {
+        id: 5,
+        title: 'Bar',
+        completed: true
+      },
+      {
+        id: 6,
+        title: 'End',
+        completed: false
+      }
+    ]
   };
 
-  componentDidMount() {
-    Axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10').then(
-      (res) => {
-        this.setState({
-          todos: res.data
-        });
-      }
-    );
-  }
-
   markComplete = (id) => {
-    console.log(id);
     this.setState({
       todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
@@ -35,36 +49,23 @@ class App extends Component {
   };
 
   deleteTodo = (id) => {
-    console.log(id);
-    Axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(
-      (res) => {
-        this.setState({
-          todos: this.state.todos.filter((todo) => todo.id !== id)
-        });
-      }
-    );
+    this.setState({
+      todos: this.state.todos.filter((todo) => todo.id !== id)
+    });
   };
 
   addTodo = (title) => {
-    console.log('add', title);
-    Axios.post('https://jsonplaceholder.typicode.com/todos', {
-      title,
-      completed: false
-    })
-      .then((res) => {
-        console.log(res);
-        this.setState({
-          todos: [...this.state.todos, res.data]
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: this.state.todos[this.state.todos.length - 1].id + 1,
+          title,
+          completed: false
+        }
+      ]
+    });
   };
-
-  randomId() {
-    return Math.random(0, 1);
-  }
 
   render() {
     return (

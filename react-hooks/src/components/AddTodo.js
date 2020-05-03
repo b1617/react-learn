@@ -6,6 +6,7 @@ export default function AddTodo(props) {
     e.preventDefault();
     console.log('event &', e);
     props.addTodo(todo);
+    setTodo('');
   };
 
   const onChange = (e) => {

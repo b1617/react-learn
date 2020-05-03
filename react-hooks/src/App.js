@@ -10,18 +10,36 @@ function App() {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      title: 'Coucou',
+      title: 'Hello',
       completed: false
     },
     {
       id: 2,
-      title: 'Salut',
+      title: 'World',
+      completed: true
+    },
+    {
+      id: 3,
+      title: 'Foo',
+      completed: false
+    },
+    {
+      id: 5,
+      title: 'Bar',
+      completed: true
+    },
+    {
+      id: 6,
+      title: 'End',
       completed: false
     }
   ]);
 
   const addTodo = (title) => {
-    setTodos([...todos, { id: todos.length + 1, title, completed: false }]);
+    setTodos([
+      ...todos,
+      { id: todos[todos.length - 1].id + 1, title, completed: false }
+    ]);
   };
 
   const deleteTodo = (id) => {
