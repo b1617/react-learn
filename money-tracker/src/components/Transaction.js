@@ -9,7 +9,7 @@ export default function Transaction({ transaction }) {
   return (
     <li className={border}>
       {transaction.text}{' '}
-      <span>
+      <span style={{ marginRight: '20px' }}>
         {sign}
         {Math.abs(transaction.amount)}€
       </span>
