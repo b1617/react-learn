@@ -1,15 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 :root {
-  --box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  --box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.215),
+    -1px -1px 3px rgba(0, 0, 0, 0.15);
 }
 
 * {
   box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+}
+
 #root {
   padding: 10px;
+  box-shadow: var(--box-shadow);
 }
 
 body {
@@ -112,10 +123,12 @@ input[type='number'] {
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  max-height: 26vh;
+  overflow-y: auto;
 }
 
 .list li {
+  overflow-y: auto;
   background-color: #fff;
   box-shadow: var(--box-shadow);
   color: #333;
