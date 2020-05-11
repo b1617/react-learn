@@ -1,6 +1,6 @@
 # Money  Tracker
 
-Tracker **incomes** and **expenses**.
+**Incomes** and **Expenses** tracker with hooks.
 
 ## Hooks
 - Context API
