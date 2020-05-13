@@ -1,0 +1,121 @@
+@import './scss/config';
+@import './scss/buttons';
+@import './scss/utils';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $default-color;
+  font-family: $font-stack;
+}
+
+.container {
+  // max-width: 1300px;
+  padding: 10px 30px;
+  margin: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: $box-shadow;
+    padding: 8px;
+
+    img {
+      width: 20px;
+      margin: 0 5px;
+    }
+
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    li {
+      font-size: 20px;
+      padding: 0 10px;
+    }
+
+    h1 {
+      color: $primary-color;
+      letter-spacing: 2px;
+    }
+
+    h1:hover {
+      cursor: default;
+    }
+
+    .flower {
+      position: relative;
+      animation: change 3s infinite;
+    }
+
+    li:hover {
+      color: $secondary-color;
+      cursor: pointer;
+    }
+
+    @keyframes change {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+
+    &-left {
+      margin: 50px 0;
+    }
+
+    &-btn {
+      cursor: pointer;
+      margin: 10px 10px;
+    }
+
+    &-btn:hover {
+      background-color: darken($primary-color, 5%);
+    }
+
+    .primary {
+      background-color: $secondary-color;
+    }
+    .primary:hover {
+      background-color: darken($secondary-color, 5%);
+    }
+
+    .slogan {
+      font-size: 50px;
+    }
+
+    p {
+      padding: 10px;
+      max-width: 400px;
+    }
+
+    img {
+      width: 45%;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .coolness {
+    display: none;
+  }
+}
